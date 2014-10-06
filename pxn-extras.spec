@@ -1,7 +1,7 @@
 Name            : pxnExtrasRepo
 Summary         : Installs the PoiXson yum repository
 Version         : 1.0.0
-Release         : 1
+Release         : 2
 BuildArch       : noarch
 Provides        : pxnyum
 Prefix          : %{_sysconfdir}/yum.repos.d
@@ -37,13 +37,6 @@ Installs the PoiXson yum repository.
 %build
 %{__cat} <<EOF >pxn.repo
 
-[pxn-centos]
-name=PoiXson CentOS \$releasever Repo
-baseurl=http://yum.poixson.com/updates/centos/\$releasever/\$basearch/
-enabled=0
-gpgcheck=0
-priority=1
-
 [pxn-extras-noarch]
 name=PoiXson Yum Extras
 baseurl=http://yum.poixson.com/extras/noarch/
@@ -55,6 +48,17 @@ priority=1
 name=PoiXson Yum Extras
 baseurl=http://yum.poixson.com/extras/\$basearch/
 enabled=1
+gpgcheck=0
+priority=1
+
+
+
+# CAUTION! This repo mirror should only be used on the internal PoiXson network
+# use of this repo elsewhere will likely hurt performance on your system.
+[pxn-centos]
+name=PoiXson CentOS \$releasever Repo
+baseurl=http://yum.poixson.com/updates/centos/\$releasever/\$basearch/
+enabled=0
 gpgcheck=0
 priority=1
 
