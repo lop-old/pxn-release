@@ -1,7 +1,7 @@
 Name            : pxnExtrasRepo
 Summary         : Installs the PoiXson yum repository
 Version         : 1.0.0
-Release         : 3
+Release         : %{RELEASE}
 BuildArch       : noarch
 Provides        : pxnyum
 Prefix          : %{_sysconfdir}/yum.repos.d

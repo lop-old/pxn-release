@@ -9,6 +9,13 @@ SPEC_FILE="pxn-extras.spec"
 
 
 
+BUILD_NUMBER="x"
+if [ "$1" == "--build-number" ]; then
+	BUILD_NUMBER=${2}
+fi
+
+
+
 # ensure rpmbuild tool is available
 which rpmbuild >/dev/null || { echo "rpmbuild not installed - yum install rpmdevtools"; exit 1; }
 # ensure .spec file exists
@@ -37,6 +44,7 @@ rpmbuild -bb \
 	--define "_topdir ${BUILD_ROOT}" \
 	--define "_tmppath ${BUILD_ROOT}/tmp" \
 	--define "_rpmdir ${OUTPUT_DIR}" \
+	--define="RELEASE ${BUILD_NUMBER}" \
 	"${BUILD_ROOT}/SPECS/${SPEC_FILE}" \
 		|| exit 1
 
