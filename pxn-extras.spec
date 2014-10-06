@@ -31,11 +31,6 @@ Installs the PoiXson yum repository.
 
 ### Build ###
 %build
-# delete existing rpm
-if [[ -f "%{_rpmdir}/%{name}-%{version}-%{release}.noarch.rpm" ]]; then
-	%{__rm} -f "%{_rpmdir}/%{name}-%{version}-%{release}.noarch.rpm" \
-		|| exit 1
-fi
 # build repo file
 %{__cat} <<EOF >pxn.repo
 
@@ -72,6 +67,8 @@ EOF
 %install
 echo
 echo "Install.."
+# delete existing rpm's
+%{__rm} -fv "%{_rpmdir}/%{name}-%{version}-"*.noarch.rpm
 # create directories
 %{__install} -d -m 0755 \
 	"${RPM_BUILD_ROOT}%{prefix}" \
