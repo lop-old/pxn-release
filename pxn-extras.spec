@@ -5,6 +5,7 @@ Release         : 3
 BuildArch       : noarch
 Provides        : pxnyum
 Prefix          : %{_sysconfdir}/yum.repos.d
+%define  _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
 
 Group		: System Environment/Base
 License		: GPL
@@ -12,11 +13,6 @@ URL             : http://yum.poixson.com/
 
 %description
 Installs the PoiXson yum repository.
-
-
-
-%define _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
-%define _rpmdir       %{OUTPUT_DIR}
 
 
 
