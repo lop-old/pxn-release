@@ -1,7 +1,7 @@
 Name            : pxnExtrasRepo
 Summary         : Installs the PoiXson yum repository
 Version         : 1.0.0
-Release         : 2
+Release         : 3
 BuildArch       : noarch
 Provides        : pxnyum
 Prefix          : %{_sysconfdir}/yum.repos.d
@@ -44,7 +44,7 @@ enabled=1
 gpgcheck=0
 priority=1
 
-[pxn-extras-\$basearch]
+[pxn-extras]
 name=PoiXson Yum Extras
 baseurl=http://yum.poixson.com/extras/\$basearch/
 enabled=1
