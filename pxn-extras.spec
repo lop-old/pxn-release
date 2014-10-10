@@ -1,4 +1,4 @@
-Name            : pxnExtrasRepo
+Name            : pxn-extras
 Summary         : Installs the PoiXson yum repository
 Version         : 1.0.%{BUILD_NUMBER}
 Release         : 1
