@@ -9,6 +9,7 @@ Prefix          : %{_sysconfdir}/yum.repos.d
 
 Group           : System Environment/Base
 License         : GPL
+Packager        : PoiXson <support@poixson.com>
 URL             : http://yum.poixson.com/
 
 %description
