@@ -7,8 +7,8 @@ Provides        : pxnyum
 Prefix          : %{_sysconfdir}/yum.repos.d
 %define  _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
 
-Group		: System Environment/Base
-License		: GPL
+Group           : System Environment/Base
+License         : GPL
 URL             : http://yum.poixson.com/
 
 %description
