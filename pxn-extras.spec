@@ -12,8 +12,19 @@ License         : GPL
 Packager        : PoiXson <support@poixson.com>
 URL             : http://yum.poixson.com/
 
+
+### Packages ###
+%package testing
+Summary         : Installs the PoiXson yum testing repository
+Provides        : pxnyum
+
+
+
 %description
 Installs the PoiXson yum repository.
+
+%description testing
+Installs the PoiXson testing yum repository. This repo receives frequent updates, however bugs are much more common.
 
 
 
@@ -32,7 +43,7 @@ Installs the PoiXson yum repository.
 
 ### Build ###
 %build
-# build repo file
+# build repo files
 %{__cat} <<EOF >pxn.repo
 
 [pxn-extras-noarch]
@@ -45,6 +56,23 @@ priority=1
 [pxn-extras]
 name=PoiXson Yum Extras
 baseurl=http://yum.poixson.com/extras/\$basearch/
+enabled=1
+gpgcheck=0
+priority=1
+
+EOF
+%{__cat} <<EOF >pxn-testing.repo
+
+[pxn-extras-testing-noarch]
+name=PoiXson Yum Extras (testing)
+baseurl=http://yum.poixson.com/extras-testing/noarch/
+enabled=1
+gpgcheck=0
+priority=1
+
+[pxn-extras-testing]
+name=PoiXson Yum Extras (testing)
+baseurl=http://yum.poixson.com/extras-testing/\$basearch/
 enabled=1
 gpgcheck=0
 priority=1
@@ -68,6 +96,10 @@ echo "Install.."
 	"pxn.repo" \
 	"${RPM_BUILD_ROOT}%{prefix}/pxn.repo" \
 		|| exit 1
+%{__install} -m 0644 \
+	"pxn-testing.repo" \
+	"${RPM_BUILD_ROOT}%{prefix}/pxn-testing.repo" \
+		|| exit 1
 
 
 
@@ -85,6 +117,10 @@ fi
 
 ### Files ###
 %files
-%defattr(644,-,-,755)
+%defattr(644,root,root,755)
 %{prefix}/pxn.repo
+
+%files testing
+%defattr(644,root,root,755)
+%{prefix}/pxn-testing.repo
 
