@@ -150,14 +150,14 @@ fi
 
 ### Files ###
 %files
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{prefix}/pxn.repo
 
 %files testing
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{prefix}/pxn-testing.repo
 
 %files private
-%defattr(644,root,root,755)
+%defattr(-,root,root,-)
 %{prefix}/pxn-private.repo
 
