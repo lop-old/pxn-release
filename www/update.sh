@@ -19,28 +19,20 @@ function updaterepo() {
 	echo " ### ${1} ###"
 	echo "Generating repo metadata.."
 	echo
-	echo "[ ${1} / noarch ]"
-	mkdir -pv "${repo_base}/${1}/noarch/packages/" || exit 1
-	( cd "${repo_base}/${1}/noarch/" && createrepo --workers=${workers} . ) \
-		|| { echo "Failed to update ${1} noarch repo!"; exit 1; }
+	echo "[ ${1} ]"
+	mkdir -pv "${repo_base}/${1}/noarch/" || exit 1
+	mkdir -pv "${repo_base}/${1}/i386/"   || exit 1
+	mkdir -pv "${repo_base}/${1}/x86_64/" || exit 1
+	( cd "${repo_base}/${1}/" && createrepo --workers=${workers} . ) \
+		|| { echo "Failed to update ${1} repo!"; exit 1; }
 	echo
-	echo "[ ${1} / i386 ]"
-	mkdir -pv "${repo_base}/${1}/i386/packages/" || exit 1
-	( cd "${repo_base}/${1}/i386/" && createrepo --workers=${workers} . ) \
-		|| { echo "Failed to update ${1} i386 repo!"; exit 1; }
-	echo
-	echo "[ ${1} / x86_64 ]"
-	mkdir -pv "${repo_base}/${1}/x86_64/packages/" || exit 1
-	( cd "${repo_base}/${1}/x86_64/" && createrepo --workers=${workers} . ) \
-		|| { echo "Failed to update ${1} x86_64 repo!"; exit 1; }
-	echo
-	echo "Finished updating pxn-extras!"
+	echo "Finished updating ${1} !"
 	echo
 	echo
 
 	# update latest.rpm link
 	if [ ${1} == "extras" ]; then
-		latestrpm=`ls "${repo_base}/extras/noarch/packages/pxn-extras-"?.*.noarch.rpm 2>/dev/null | sort --version-sort -r | head -1`
+		latestrpm=`ls "${repo_base}/extras/noarch/pxn-extras-"?.*.noarch.rpm 2>/dev/null | sort --version-sort -r | head -1`
 		if [[ -z ${latestrpm} ]]; then
 			echo "*** latest.rpm target not found!!! ***"
 		else
