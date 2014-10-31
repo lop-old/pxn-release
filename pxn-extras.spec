@@ -54,17 +54,9 @@ Installs the PoiXson private yum repository. This repo is restricted to the PoiX
 # build repo files
 %{__cat} <<EOF >pxn.repo
 
-[pxn-extras-noarch]
-name=PoiXson Yum Extras
-baseurl=http://yum.poixson.com/extras/noarch/
-enabled=1
-skip_if_unavailable=1
-gpgcheck=0
-priority=11
-
 [pxn-extras]
 name=PoiXson Yum Extras
-baseurl=http://yum.poixson.com/extras/\$basearch/
+baseurl=http://yum.poixson.com/extras/
 enabled=1
 skip_if_unavailable=1
 gpgcheck=0
@@ -73,17 +65,9 @@ priority=11
 EOF
 %{__cat} <<EOF >pxn-testing.repo
 
-[pxn-extras-testing-noarch]
-name=PoiXson Yum Extras (testing)
-baseurl=http://yum.poixson.com/extras-testing/noarch/
-enabled=1
-skip_if_unavailable=1
-gpgcheck=0
-priority=1
-
 [pxn-extras-testing]
 name=PoiXson Yum Extras (testing)
-baseurl=http://yum.poixson.com/extras-testing/\$basearch/
+baseurl=http://yum.poixson.com/extras-testing/
 enabled=1
 skip_if_unavailable=1
 gpgcheck=0
@@ -92,16 +76,9 @@ priority=1
 EOF
 %{__cat} <<EOF >pxn-private.repo
 
-[pxn-extras-private-noarch]
-name=PoiXson Yum Extras (private)
-baseurl=http://yum.poixson.com/extras-private/noarch/
-enabled=1
-gpgcheck=0
-priority=1
-
 [pxn-extras-private]
 name=PoiXson Yum Extras (private)
-baseurl=http://yum.poixson.com/extras-private/\$basearch/
+baseurl=http://yum.poixson.com/extras-private/
 enabled=1
 gpgcheck=0
 priority=1
