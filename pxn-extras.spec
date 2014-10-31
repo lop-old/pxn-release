@@ -70,6 +70,7 @@ name=PoiXson Yum Extras (testing)
 baseurl=http://yum.poixson.com/extras-testing/
 enabled=1
 skip_if_unavailable=1
+metadata_expire=1h
 gpgcheck=0
 priority=1
 
@@ -80,6 +81,7 @@ EOF
 name=PoiXson Yum Extras (private)
 baseurl=http://yum.poixson.com/extras-private/
 enabled=1
+metadata_expire=1h
 gpgcheck=0
 priority=1
 
