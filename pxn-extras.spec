@@ -15,6 +15,10 @@ URL             : http://yum.poixson.com/
 
 
 ### Packages ###
+%package stable
+Summary         : Installs the PoiXson yum stable repository
+Provides        : pxnyum
+
 %package testing
 Summary         : Installs the PoiXson yum testing repository
 Provides        : pxnyum
@@ -27,6 +31,9 @@ Provides        : pxnyum
 
 %description
 Installs the PoiXson yum repository.
+
+%description stable
+Installs the PoiXson stable yum repository. This repo receives fewer updates, however is considered more stable than testing.
 
 %description testing
 Installs the PoiXson testing yum repository. This repo receives frequent updates, however bugs are much more common.
@@ -52,11 +59,11 @@ Installs the PoiXson private yum repository. This repo is restricted to the PoiX
 ### Build ###
 %build
 # build repo files
-%{__cat} <<EOF >pxn.repo
+%{__cat} <<EOF >pxn-stable.repo
 
-[pxn-extras]
-name=PoiXson Yum Extras
-baseurl=http://yum.poixson.com/extras/
+[pxn-extras-stable]
+name=PoiXson Yum Extras (stable)
+baseurl=http://yum.poixson.com/extras-stable/
 enabled=1
 skip_if_unavailable=1
 gpgcheck=0
@@ -101,8 +108,8 @@ echo "Install.."
 		|| exit 1
 # copy .repo file
 %{__install} -m 0644 \
-	"pxn.repo" \
-	"${RPM_BUILD_ROOT}%{prefix}/pxn.repo" \
+	"pxn-stable.repo" \
+	"${RPM_BUILD_ROOT}%{prefix}/pxn-stable.repo" \
 		|| exit 1
 %{__install} -m 0644 \
 	"pxn-testing.repo" \
@@ -128,9 +135,9 @@ fi
 
 
 ### Files ###
-%files
+%files stable
 %defattr(-,root,root,-)
-%{prefix}/pxn.repo
+%{prefix}/pxn-stable.repo
 
 %files testing
 %defattr(-,root,root,-)
