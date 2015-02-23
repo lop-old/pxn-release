@@ -1,9 +1,8 @@
-Name            : pxn-extras
+Name            : pxn-release
 Summary         : Installs the PoiXson yum repository
 Version         : 1.0.%{BUILD_NUMBER}
 Release         : 1
 BuildArch       : noarch
-Provides        : pxnyum
 Prefix          : %{_sysconfdir}/yum.repos.d
 %define  _rpmfilename  %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm
 
@@ -63,7 +62,7 @@ Installs the PoiXson private yum repository. This repo is restricted to the PoiX
 
 [pxn-extras-stable]
 name=PoiXson Yum Extras (stable)
-baseurl=http://yum.poixson.com/extras-stable/
+baseurl=http://yum.poixson.com/stable/
 enabled=1
 skip_if_unavailable=1
 gpgcheck=0
@@ -74,7 +73,7 @@ EOF
 
 [pxn-extras-testing]
 name=PoiXson Yum Extras (testing)
-baseurl=http://yum.poixson.com/extras-testing/
+baseurl=http://yum.poixson.com/testing/
 enabled=1
 skip_if_unavailable=1
 metadata_expire=1h
@@ -86,7 +85,7 @@ EOF
 
 [pxn-extras-private]
 name=PoiXson Yum Extras (private)
-baseurl=http://yum.poixson.com/extras-private/
+baseurl=http://yum.poixson.com/private/
 enabled=1
 metadata_expire=1h
 gpgcheck=0
